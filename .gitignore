@@ -1,0 +1,43 @@
+# Dependencies
+node_modules/
+remotion/node_modules/
+
+# Build output
+dist/
+dist-electron/
+out/
+release/
+src/renderer/dist-electron/
+
+# Temp files
+*.log
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Temp compositions
+src/remotion/src/compositions/Temp*.tsx
+remotion/src/Root.backup.tsx
+
+# Whisper binaries (downloaded by postinstall)
+resources/whisper/*.exe
+resources/whisper/*.dll
+resources/whisper/*.so
+resources/whisper/*.dylib
+resources/whisper/main
+!resources/whisper/.gitkeep
+!resources/whisper/README.txt
+
+# FFmpeg binaries (downloaded by postinstall)
+resources/ffmpeg/*.exe
+resources/ffmpeg/*.dll
+!resources/ffmpeg/.gitkeep

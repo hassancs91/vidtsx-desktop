@@ -1,0 +1,212 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #FFFDF0;
+  color: #000000;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Neo-brutalist card */
+.neo-card {
+  background-color: #FFFFFF;
+  border: 2px solid #000000;
+  border-radius: 8px;
+  box-shadow: 4px 4px 0px #000000;
+}
+
+/* Neo-brutalist button */
+.neo-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  font-weight: 700;
+  font-size: 14px;
+  border: 2px solid #000000;
+  border-radius: 8px;
+  box-shadow: 4px 4px 0px #000000;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.neo-btn:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #000000;
+}
+
+.neo-btn:active {
+  transform: translate(4px, 4px);
+  box-shadow: none;
+}
+
+.neo-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 4px 4px 0px #000000;
+}
+
+.neo-btn-primary {
+  background-color: #FF6B6B;
+  color: #000000;
+}
+
+.neo-btn-secondary {
+  background-color: #4ECDC4;
+  color: #000000;
+}
+
+.neo-btn-accent {
+  background-color: #FFE500;
+  color: #000000;
+}
+
+/* Progress bar */
+.neo-progress {
+  height: 24px;
+  background-color: #FFFFFF;
+  border: 2px solid #000000;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.neo-progress-bar {
+  height: 100%;
+  background-color: #4ECDC4;
+  transition: width 0.3s ease;
+}
+
+/* Format toggle */
+.format-toggle {
+  display: flex;
+  gap: 8px;
+}
+
+.format-btn {
+  padding: 8px 16px;
+  font-weight: 600;
+  border: 2px solid #000000;
+  border-radius: 6px;
+  background-color: #FFFFFF;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+.format-btn.active {
+  background-color: #FFE500;
+  box-shadow: 2px 2px 0px #000000;
+}
+
+.format-btn:hover:not(.active) {
+  background-color: #F5F3E4;
+}
+
+/* Tab Navigation - Neo-Brutalist Style */
+.neo-tab-bar {
+  display: flex;
+  gap: 0;
+  margin-bottom: 24px;
+  border-bottom: 3px solid #000000;
+  background-color: #FFFFFF;
+}
+
+.neo-tab {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 24px;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background-color: #F5F3E4;
+  border: 2px solid #000000;
+  border-bottom: none;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  margin-bottom: -3px;
+}
+
+.neo-tab:first-child {
+  border-radius: 8px 0 0 0;
+}
+
+.neo-tab:last-child {
+  border-radius: 0 8px 0 0;
+}
+
+.neo-tab:not(:first-child) {
+  border-left: none;
+}
+
+.neo-tab:hover:not(.neo-tab-active):not(.neo-tab-disabled) {
+  background-color: #FFE500;
+  transform: translateY(-2px);
+}
+
+.neo-tab-active {
+  background-color: #FFFFFF;
+  border-bottom: 3px solid #FFFFFF;
+  z-index: 1;
+}
+
+.neo-tab-disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.neo-tab-label {
+  white-space: nowrap;
+}
+
+.neo-tab-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.neo-tab-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  font-size: 10px;
+  font-weight: 600;
+  background-color: #FFE500;
+  border: 1px solid #000000;
+  border-radius: 4px;
+}
+
+/* Tab Panel Styles */
+.neo-tab-panel {
+  display: none;
+}
+
+.neo-tab-panel-active {
+  display: block;
+  animation: fadeIn 0.15s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

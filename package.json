@@ -1,0 +1,93 @@
+{
+  "name": "vidtsx-desktop",
+  "version": "1.0.0",
+  "description": "Local TSX Renderer and Video Transcriber",
+  "author": "VidTSX <contact@vidtsx.com>",
+  "main": "dist-electron/index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && electron-builder",
+    "build:publish": "vite build && electron-builder --publish always",
+    "preview": "vite preview",
+    "remotion:install": "cd remotion && npm install",
+    "postinstall": "node scripts/download-whisper.js && node scripts/download-ffmpeg.js",
+    "download:whisper": "node scripts/download-whisper.js",
+    "download:ffmpeg": "node scripts/download-ffmpeg.js"
+  },
+  "dependencies": {
+    "@remotion/bundler": "^4.0.0",
+    "@remotion/compositor-win32-x64-msvc": "^4.0.0",
+    "@remotion/renderer": "^4.0.0",
+    "@rollup/rollup-win32-x64-msvc": "^4.55.1",
+    "@types/fluent-ffmpeg": "^2.1.28",
+    "electron-store": "^8.1.0",
+    "electron-updater": "^6.7.3",
+    "ffmpeg-static": "^5.3.0",
+    "fluent-ffmpeg": "^2.1.3",
+    "mime-types": "^2.1.35",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "remotion": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/mime-types": "^2.1.4",
+    "@types/node": "^20.10.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@vitejs/plugin-react": "^4.2.0",
+    "autoprefixer": "^10.4.16",
+    "concurrently": "^8.2.2",
+    "electron": "^28.3.3",
+    "electron-builder": "^24.9.1",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.3.0",
+    "unzipper": "^0.12.3",
+    "vite": "^5.0.0",
+    "vite-plugin-electron": "^0.28.8",
+    "vite-plugin-electron-renderer": "^0.14.5",
+    "wait-on": "^7.2.0"
+  },
+  "build": {
+    "appId": "com.vidtsx.desktop",
+    "productName": "VidTSX Desktop",
+    "directories": {
+      "output": "release"
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "YOUR_GITHUB_USERNAME",
+      "repo": "vidtsx-desktop"
+    },
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*",
+      "remotion/**/*",
+      "node_modules/@remotion/**/*"
+    ],
+    "asarUnpack": [
+      "remotion/**/*",
+      "node_modules/@remotion/**/*",
+      "node_modules/esbuild/**/*",
+      "node_modules/@esbuild/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "node_modules/@remotion/compositor-win32-x64-msvc",
+        "to": "compositor"
+      },
+      {
+        "from": "resources/whisper",
+        "to": "whisper"
+      },
+      {
+        "from": "resources/ffmpeg",
+        "to": "ffmpeg"
+      }
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "resources/icon.ico"
+    }
+  }
+}
