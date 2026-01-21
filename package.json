@@ -56,7 +56,7 @@
     },
     "publish": {
       "provider": "github",
-      "owner": "YOUR_GITHUB_USERNAME",
+      "owner": "hassancs91",
       "repo": "vidtsx-desktop"
     },
     "files": [
