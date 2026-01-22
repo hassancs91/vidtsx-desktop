@@ -14,6 +14,8 @@ import type {
 } from '../shared/types'
 
 const electronAPI: ElectronAPI = {
+  getVersion: () => ipcRenderer.invoke('get-version'),
+
   openExternal: (url: string) => ipcRenderer.invoke('open-external', url),
 
   selectTsxFile: () => ipcRenderer.invoke('select-tsx-file'),

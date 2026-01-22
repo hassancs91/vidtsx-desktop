@@ -1,4 +1,4 @@
-import { ipcMain, dialog, BrowserWindow, shell } from 'electron'
+import { ipcMain, dialog, BrowserWindow, shell, app } from 'electron'
 import { writeFileSync } from 'fs'
 import { RenderService } from './services/render'
 import { transcriberService } from './services/transcriber'
@@ -16,6 +16,11 @@ import type {
 const renderService = new RenderService()
 
 export function registerIpcHandlers() {
+  // Get app version
+  ipcMain.handle('get-version', () => {
+    return app.getVersion()
+  })
+
   // Open external URL in default browser
   ipcMain.handle('open-external', async (_, url: string) => {
     await shell.openExternal(url)

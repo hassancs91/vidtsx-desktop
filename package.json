@@ -1,6 +1,6 @@
 {
   "name": "vidtsx-desktop",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Local TSX Renderer and Video Transcriber",
   "author": "VidTSX <contact@vidtsx.com>",
   "main": "dist-electron/index.js",
@@ -63,10 +63,12 @@
       "dist/**/*",
       "dist-electron/**/*",
       "remotion/**/*",
+      "remotion/node_modules/**/*",
       "node_modules/@remotion/**/*"
     ],
     "asarUnpack": [
       "remotion/**/*",
+      "remotion/node_modules/**/*",
       "node_modules/@remotion/**/*",
       "node_modules/esbuild/**/*",
       "node_modules/@esbuild/**/*"
@@ -83,11 +85,16 @@
       {
         "from": "resources/ffmpeg",
         "to": "ffmpeg"
+      },
+      {
+        "from": "remotion/node_modules",
+        "to": "app.asar.unpacked/remotion/node_modules"
       }
     ],
     "win": {
       "target": "nsis",
-      "icon": "resources/icon.ico"
+      "icon": "resources/icon.ico",
+      "artifactName": "VidTSX-Desktop-Setup.${ext}"
     }
   }
 }

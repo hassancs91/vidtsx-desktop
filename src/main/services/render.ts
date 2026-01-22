@@ -114,6 +114,8 @@ export class RenderService {
           ? join(process.resourcesPath, 'compositor')
           : null,
         proResProfile: codec === 'prores' ? '4444' : undefined,
+        pixelFormat: codec === 'prores' ? 'yuva444p10le' : undefined,
+        imageFormat: codec === 'prores' ? 'png' : undefined,
         onProgress: ({ progress }) => {
           onProgress({
             phase: 'rendering',

@@ -128,6 +128,7 @@ export interface TranscriberAPI {
 }
 
 export interface ElectronAPI {
+  getVersion: () => Promise<string>
   openExternal: (url: string) => Promise<void>
   selectTsxFile: () => Promise<string | null>
   selectOutputPath: (format: 'mp4' | 'mov') => Promise<string | null>
