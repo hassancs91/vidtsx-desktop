@@ -135,7 +135,19 @@ export class RenderService {
     return new Promise((resolve) => {
       this.server = createServer((req, res) => {
         const urlPath = req.url === '/' ? '/index.html' : req.url || '/index.html'
-        const filePath = join(bundlePath, urlPath)
+        let filePath: string
+
+        // Check if the request is for a file in the public folder
+        if (urlPath.startsWith('/public/')) {
+          // Serve from the public directory at the root of the project
+          const publicDir = app.isPackaged
+            ? join(app.getAppPath().replace('app.asar', 'app.asar.unpacked'), 'public')
+            : join(process.cwd(), 'public')
+          filePath = join(publicDir, urlPath.replace('/public/', ''))
+        } else {
+          // Serve from the bundled directory
+          filePath = join(bundlePath, urlPath)
+        }
 
         if (existsSync(filePath)) {
           const mimeType = lookup(filePath) || 'application/octet-stream'
